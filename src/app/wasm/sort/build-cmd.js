@@ -1,0 +1,1 @@
+exports.cmd = 'emcc -Os src/app/wasm/sort/sort.c -o src/assets/wasm/sort.js -s MODULARIZE=1 -s ALLOW_MEMORY_GROWTH=1 -s EXTRA_EXPORTED_RUNTIME_METHODS="[\'ccall\']" -s ASYNCIFY=1 -s EXPORT_NAME="SortModule"';

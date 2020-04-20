@@ -22,6 +22,8 @@ interface EmscriptenModule {
     arguments: any[],
     options?: CcallOptions
   ): any;
+  _malloc?(size: number): number;
+  HEAP32?: any;
   preRun?: Function[];
   postRun?: Function[];
   canvas?: HTMLCanvasElement;

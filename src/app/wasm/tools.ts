@@ -35,3 +35,16 @@ export function utf8ToString(heap: Uint8Array, offset: number) {
   }
   return s;
 }
+
+export function arrayToPtr(array: number[], module: EmscriptenModule) {
+  const ptr = module._malloc(array.length * 4);
+  module.HEAP32.set(array, ptr / 4);
+  return ptr;
+}
+
+export function ptrToArray(ptr: number, length: number, module: EmscriptenModule) {
+  const array = new Int32Array(length);
+  const pos = ptr / 4;
+  array.set(module.HEAP32.subarray(pos, pos + length));
+  return array;
+}
